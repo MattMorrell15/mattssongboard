@@ -1,4 +1,4 @@
-import {} from 'react';
+import { useState } from 'react';
 import lasersharkpic from './assets/lasershark.jpg';
 import lazersharkprofilepic from './assets/lazersharkprofilepic.jpg';
 import './App.css';
