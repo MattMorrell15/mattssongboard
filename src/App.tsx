@@ -1,4 +1,4 @@
-import { } from 'react';
+import {  } from 'react';
 import lasersharkpic from './assets/lasershark.jpg';
 import lazersharkprofilepic from './assets/lazersharkprofilepic.jpg';
 import './App.css';
@@ -12,7 +12,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 function App() {
   async function getMixes() {
-    let { data: mixes,  } = await supabase.from('mixes').select('*');
+    let { data: mixes } = await supabase.from('mixes').select('*');
     for (let mix of mixes) {
       let mixList = document.getElementById('Mixes');
       mixList.innerHTML += `<li>${mix.title} // ${mix.artist}</li>`;
@@ -21,7 +21,7 @@ function App() {
   getMixes();
   
   async function getSongs() {
-    let { data: Songs,  } = await supabase.from('Songs').select('*');
+    let { data: Songs } = await supabase.from('Songs').select('*');
     for (let song of Songs) {
       let songList = document.getElementById('Songs');
       songList.innerHTML += `<li>${song.title} - ${song.artist}</li>`;
@@ -52,5 +52,7 @@ function App() {
     </>
   );
 }
+
+
 
 export default App;
