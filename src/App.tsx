@@ -2,19 +2,32 @@ import { } from 'react';
 import lasersharkpic from './assets/lasershark.jpg';
 import lazersharkprofilepic from './assets/lazersharkprofilepic.jpg';
 import './App.css';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js'
-import { getMixes } from './getMixes';
-import { getSongs } from './getSongs';
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
 const supabaseUrl = 'https://jxhnpukxnjlmtboemcgv.supabase.co';
 const supabaseKey =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp4aG5wdWt4bmpsbXRib2VtY2d2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQxNjc0MTEsImV4cCI6MjAyOTc0MzQxMX0.ssx_WjyvnlAW-lMScnX_P3qUBBfYkVShD5UZbqSM0AQ';
-export const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-getMixes();
-
-getSongs();
 
 function App() {
+  async function getMixes() {
+    let { data: mixes,  } = await supabase.from('mixes').select('*');
+    for (let mix of mixes) {
+      let mixList = document.getElementById('Mixes');
+      mixList.innerHTML += `<li>${mix.title} // ${mix.artist}</li>`;
+    }
+  }
+  getMixes();
+  
+  async function getSongs() {
+    let { data: Songs,  } = await supabase.from('Songs').select('*');
+    for (let song of Songs) {
+      let songList = document.getElementById('Songs');
+      songList.innerHTML += `<li>${song.title} - ${song.artist}</li>`;
+    }
+  }
+  getSongs();
   return (
     <>
       <div>
