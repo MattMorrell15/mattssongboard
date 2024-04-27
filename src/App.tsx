@@ -2,7 +2,7 @@ import { } from 'react';
 import lasersharkpic from './assets/lasershark.jpg';
 import lazersharkprofilepic from './assets/lazersharkprofilepic.jpg';
 import './App.css';
-import { createClient } from "https://esm.sh/@supabase/supabase-js";
+import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = 'https://jxhnpukxnjlmtboemcgv.supabase.co';
 const supabaseKey =
